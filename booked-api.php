@@ -800,14 +800,14 @@ class Client {
      * @return boolean
      */
     private static function hasSessionExpired(){
-        date_default_timezone_set(YOURTIMEZONE);
+        date_default_timezone_set(config::YOURTIMEZONE);
         if( ! isset($_SESSION ['bookedapi_sessionExpires'])){
             return true;
         }
-        //$date1 = new DateTime ( $_SESSION ['bookedapi_sessionExpires'], new DateTimeZone ( YOURTIMEZONE ) );
+        //$date1 = new DateTime ( $_SESSION ['bookedapi_sessionExpires'], new DateTimeZone ( config::YOURTIMEZONE ) );
         $date1 = new DateTime($_SESSION ['bookedapi_sessionExpires']);
 
-        //$date2 = new DateTime ( date ( DATE_ISO8601, time () ), new DateTimeZone ( YOURTIMEZONE ) );
+        //$date2 = new DateTime ( date ( DATE_ISO8601, time () ), new DateTimeZone ( config::YOURTIMEZONE ) );
         $date2 = new DateTime(date(DATE_ISO8601, time()));
 
         $minutesInterval = date_interval_create_from_date_string('1 minute');
